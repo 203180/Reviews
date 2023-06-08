@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Reviews</title>
+</head>
+
+<body>
+<h1>Reviews</h1>
+
+<form method="get" action="TUKA DODAJ AKCIJA">
+    <label>Order by rating:</label><br>
+    <select name="orderRating" class="form-control">
+        <option value="Highest First">Highest First</option>
+        <option value="Lowest First">Lowest First</option>
+    </select>
+    <br>
+    <br>
+    <label>Minimum Rating:</label><br>
+    <select name="minRating" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <br>
+    <br>
+    <label>Order by Date:</label><br>
+    <select name="orderDate">
+        <option value="Oldest First">Oldest First</option>
+        <option value="Newest First">Newest First</option>
+    </select>
+    <br>
+    <br>
+
+    <label>Prioritize by Text:</label><br>
+    <select name="prioText">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+
+    <br>
+    <br>
+    <button type="submit">Sort!</button>
+</form>
+
+<div th:each="review : ${reviews}">
+    <p> Review Text: <th:block th:text="${review.getReviewText()}"></th:block><br>
+        Rating: <th:block th:text="${review.getRating()}"></th:block><br>
+        Review Created On Date: <th:block th:text="${review.getReviewCreatedOnDate()}"></th:block><br>
+        Reviewer Name: <th:block th:text="${review.getReviewerName()}"></th:block><br>
+    </p>
+    <br>
+</div>
+
+</body>
+</html>
